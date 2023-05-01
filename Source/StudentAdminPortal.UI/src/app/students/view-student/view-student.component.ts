@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Student } from 'src/app/models/api-models/student.model';
+import { Student } from 'src/app/models/ui-models/student.model';
 import { StudentService } from '../student.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,6 +10,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewStudentComponent {
   studentId: string | null | undefined;
+  student: Student = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    dateOfBirth: '',
+    email: '',
+    mobile: 0,
+    genderId: '',
+    profileImageUrl: '',
+    gender: {
+      id: '',
+      description: ''
+    },
+    address: {
+      id: '',
+      physicalAddress: '',
+      postalAddress: ''
+    }
+  }
 
   constructor(private readonly studentService: StudentService,
     private readonly route: ActivatedRoute) {}
@@ -26,7 +45,7 @@ export class ViewStudentComponent {
         this.studentService.getStudent(this.studentId)
         .subscribe(
           (successReponse) => {
-            console.log(successReponse);
+            this.student = successReponse;
           }
         )
       }
