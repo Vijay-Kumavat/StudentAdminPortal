@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Student } from 'src/app/models/ui-models/student.model';
 import { StudentService } from '../student.service';
 import { ActivatedRoute } from '@angular/router';
+import { GenderService } from 'src/app/services/gender.service';
+import { Gender } from 'src/app/models/api-models/gender.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-student',
@@ -10,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewStudentComponent {
   studentId: string | null | undefined;
+  genderList: Gender[] = [];
   student: Student = {
     id: '',
     firstName: '',
@@ -31,7 +35,9 @@ export class ViewStudentComponent {
   }
 
   constructor(private readonly studentService: StudentService,
-    private readonly route: ActivatedRoute) {}
+    private readonly route: ActivatedRoute,
+    private readonly genderService: GenderService,
+    private snackBar: MatSnackBar) {}
 
     ngOnInit(): void{
       console.log('view student worked!')
@@ -48,6 +54,27 @@ export class ViewStudentComponent {
             this.student = successReponse;
           }
         )
+
+        this.genderService.getGenderList()
+        .subscribe(
+          (successResponse) => {
+            this.genderList = successResponse;
+          }
+        )
       }
+    }
+
+    OnUpdate(): void{
+      this.studentService.updateStudent(this.student.id, this.student)
+      .subscribe(
+        (successReponse) =>{
+          this.snackBar.open('Student updated successfully!', undefined, {
+            duration: 2000
+          });
+        },
+        (errorReponse) => {
+          console.log(errorReponse);
+        }
+      );
     }
 }
