@@ -11,7 +11,7 @@ namespace StudentAdminPortal.API.Repositories
             this.context = context;
         }
 
-        public async Task<Student> GetStudentByIdAsync(Guid studentId)
+        public async Task<Student> GetStudentAsync(Guid studentId)
         {
             return (await context.Student.Include(nameof(Gender)).Include(nameof(Address)).FirstOrDefaultAsync(f => f.Id.Equals(studentId)))!;
         }
@@ -33,7 +33,7 @@ namespace StudentAdminPortal.API.Repositories
 
         public async Task<Student> UpdateStudent(Guid studentId, Student request)
         {
-            var existingStudent = await GetStudentByIdAsync(studentId);
+            var existingStudent = await GetStudentAsync(studentId);
             if (existingStudent != null)
             {
                 existingStudent.FirstName = request.FirstName;
@@ -50,6 +50,20 @@ namespace StudentAdminPortal.API.Repositories
             }
 
             return null!;
+        }
+
+        public async Task<Student> DeleteStudent(Guid studentId)
+        {
+            var student = await GetStudentAsync(studentId);
+
+            if (student != null)
+            {
+                context.Student.Remove(student);
+                await context.SaveChangesAsync();
+                return student;
+            }
+
+            return null;
         }
     }
 }
