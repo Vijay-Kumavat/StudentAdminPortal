@@ -14,6 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ViewStudentComponent {
   studentId: string | null | undefined;
   genderList: Gender[] = [];
+  isNewStudent: Boolean = false;
+  header: string = '';
   student: Student = {
     id: '',
     firstName: '',
@@ -49,12 +51,19 @@ export class ViewStudentComponent {
     );
 
     if (this.studentId) {
-      this.studentService.getStudent(this.studentId)
-        .subscribe(
-          (successReponse) => {
-            this.student = successReponse;
-          }
-        )
+      if (this.studentId.toLowerCase() === 'Add'.toLowerCase()) {
+        this.isNewStudent = true;
+        this.header = 'Add the student';
+      } else {
+        this.isNewStudent = false;
+        this.header = 'Edit the student';
+        this.studentService.getStudent(this.studentId)
+          .subscribe(
+            (successReponse) => {
+              this.student = successReponse;
+            }
+          )
+      }
 
       this.genderService.getGenderList()
         .subscribe(
@@ -81,19 +90,37 @@ export class ViewStudentComponent {
 
   OnDelete(): void {
     this.studentService.deleteStudent(this.student.id)
-    .subscribe(
-      (successReponse) => {
-        this.snackBar.open('Student delete successfully!', undefined, {
-          duration: 2000
-        });
+      .subscribe(
+        (successReponse) => {
+          this.snackBar.open('Student delete successfully!', undefined, {
+            duration: 2000
+          });
 
-        setTimeout(() => {
-          this.router.navigateByUrl('/students');
-        }, 2000);
-      },
-      (errorResponse) => {
-        console.log(errorResponse);
-      }
-    )
+          setTimeout(() => {
+            this.router.navigateByUrl('/students');
+          }, 2000);
+        },
+        (errorResponse) => {
+          console.log(errorResponse);
+        }
+      )
+  }
+
+  OnAdd(): void {
+    this.studentService.addStudent(this.student)
+      .subscribe(
+        (successReponse) => {
+          this.snackBar.open('Student add successfully', undefined, {
+            duration: 2000
+          });
+
+          setTimeout(() => {
+            this.router.navigateByUrl('/students');
+          }, 2000);
+        },
+        (errorResponse) => {
+          console.log(errorResponse);
+        }
+      )
   }
 }
