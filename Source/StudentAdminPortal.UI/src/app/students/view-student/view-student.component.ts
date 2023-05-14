@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Student } from 'src/app/models/ui-models/student.model';
 import { StudentService } from '../student.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenderService } from 'src/app/services/gender.service';
 import { Gender } from 'src/app/models/api-models/gender.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-view-student',
@@ -14,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ViewStudentComponent {
   studentId: string | null | undefined;
   genderList: Gender[] = [];
+  @ViewChild('studentDetailsForm') studentDetailsForm?: NgForm;
   isNewStudent: Boolean = false;
   header: string = '';
   displayProfileImageUrl: string = '';
@@ -81,17 +83,19 @@ export class ViewStudentComponent {
   }
 
   OnUpdate(): void {
-    this.studentService.updateStudent(this.student.id, this.student)
-      .subscribe(
-        (successReponse) => {
-          this.snackBar.open('Student updated successfully!', undefined, {
-            duration: 2000
-          });
-        },
-        (errorReponse) => {
-          console.log(errorReponse);
-        }
-      );
+    if(this.studentDetailsForm?.form.valid){
+      this.studentService.updateStudent(this.student.id, this.student)
+        .subscribe(
+          (successReponse) => {
+            this.snackBar.open('Student updated successfully!', undefined, {
+              duration: 2000
+            });
+          },
+          (errorReponse) => {
+            console.log(errorReponse);
+          }
+        );
+    }
   }
 
   OnDelete(): void {
@@ -113,6 +117,7 @@ export class ViewStudentComponent {
   }
 
   OnAdd(): void {
+    if(this.studentDetailsForm?.form.valid){
     this.studentService.addStudent(this.student)
       .subscribe(
         (successReponse) => {
@@ -128,6 +133,7 @@ export class ViewStudentComponent {
           console.log(errorResponse);
         }
       )
+    }
   }
 
   uploadImage(event: any): void {
