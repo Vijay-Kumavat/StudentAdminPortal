@@ -31,9 +31,26 @@ This is a full stack application developed using Angular 15 for the frontend and
   - Search functionality
 ![Search functionality](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_5.png)
   - Add student
-![Add student](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_6.png)
+![Add student](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_9.png)
   - Validation
 ![Validation](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_8.png)
+  - Edit student
+![Edit student](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_10.png)
+
+# Deploy images:
+  - Deploy REST API using azure app service
+![Deploy rest api using azure app service](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/download.png)
+  - Get students API
+![Get students](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_2.png)
+  - Get gender API
+![Get gender API](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_1.png)
+  - Azure resource
+![Azure resource](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_11.png)
+  - Google firebase console
+![Google firebase console](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_4.png)
+  - Deploy angular app in firebase
+![Deploy angular app in firebase](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_12.png)
+
 
 
 Acknowledgements
