@@ -16,10 +16,10 @@ This is a full stack application developed using Angular 15 for the frontend and
 
 # Getting Started
   - Clone the repository: git clone [https://github.com/Vijay-Kumavat/StudentAdminPortal.git](https://github.com/Vijay-Kumavat/StudentAdminPortal.git)
-  - Navigate to the frontend directory: cd frontend
+  - Navigate to the frontend directory: cd StudentAdminPortal.UI
   - Install frontend dependencies: npm install
   - Start the frontend server: npm start
-  - Navigate to the backend directory: cd ../backend
+  - Navigate to the backend directory: cd StudentAdminPortal.API
   - Restore backend dependencies: dotnet restore
   - Build and run the backend server: dotnet run
   - Access the application in your browser at http://localhost:4200
