@@ -15,7 +15,7 @@ This is a full stack application developed using Angular 15 for the frontend and
   - Database Server: Install and configure the appropriate database server (e.g., SQL Server, MySQL, PostgreSQL) and ensure it is accessible.
 
 # Getting Started
-  - Clone the repository: git clone [https://github.com/your-username/repo-name.git](https://github.com/Vijay-Kumavat/StudentAdminPortal.git)
+  - Clone the repository: git clone [https://github.com/Vijay-Kumavat/StudentAdminPortal.git](https://github.com/Vijay-Kumavat/StudentAdminPortal.git)
   - Navigate to the frontend directory: cd frontend
   - Install frontend dependencies: npm install
   - Start the frontend server: npm start
@@ -24,6 +24,17 @@ This is a full stack application developed using Angular 15 for the frontend and
   - Build and run the backend server: dotnet run
   - Access the application in your browser at http://localhost:4200
   - Please refer to the individual project directories (frontend and backend) for more specific instructions and customization options.
+
+# Application look like:
+  - Home page of application
+![Home page of application](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_3.png)
+  - Search functionality
+![Search functionality](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_5.png)
+  - Add student
+![Add student](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_6.png)
+  - Validation
+![Validation](https://github.com/Vijay-Kumavat/StudentAdminPortal/blob/main/Images/Screenshot_8.png)
+
 
 Acknowledgements
 We would like to express our gratitude to the open-source community and the developers behind the Angular and ASP.NET Core frameworks. Their hard work and dedication make projects like this possible.
